@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explore Mysuru - The City of Palaces</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background-image: url('https://www.nativeplanet.com/img/2023/08/chamundi-hill-temple_1692426407996-1200x675-20230819120201.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 60vh;
+      position: relative;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .header-content {
+      position: absolute;
+      color: white;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    nav {
+  background: linear-gradient(90deg, #2c3e50, #34495e, #2c3e50);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #f39c12;
+  text-shadow: 0 0 5px rgba(243, 156, 18, 0.7);
+}
+
+.nav-links a {
+  position: relative;
+  color: #ecf0f1;
+  font-weight: 500;
+  text-decoration: none;
+  margin: 0 1rem;
+  transition: color 0.3s ease;
+  padding: 0.3rem 0;
+  font-size: 1rem;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: #f1c40f;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #f1c40f;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+
+    .intro {
+      padding: 2rem;
+      text-align: center;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  padding: 2rem;
+}
+    .card {
+      cursor: pointer;
+
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1rem;
+    }
+
+    .card-content h3 {
+      margin: 0.5rem 0;
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .safaris {
+  padding: 50px 20px;
+  background-color: #fcfcfc;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.safaris h2 {
+  font-size: 30px;
+  margin-bottom: 30px;
+  color: #222;
+  font-weight: bold;
+  text-align: center;
+}
+
+.safari-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.safari-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.safari-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.safari-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.safari-info {
+  padding: 18px;
+}
+
+.safari-info h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #333;
+}
+
+.rating {
+  font-size: 14px;
+  color: #28a745;
+  margin-bottom: 6px;
+}
+
+.rating span {
+  font-size: 16px;
+  color: #28a745;
+  margin-right: 5px;
+}
+
+.type {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.price {
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+}
+
+.note {
+  font-weight: normal;
+  font-size: 13px;
+  color: #666;
+}
+
+.badge {
+  background-color: #ffe082;
+  color: #000;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-right: 5px;
+  text-transform: uppercase;
+}
+.nearby-slider-section {
+  padding: 40px 20px;
+  background: #eafaf4;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+}
+
+.nearby-slider-section h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 20px;
+}
+
+.slider-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.5s ease;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.slider-track::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-card {
+  min-width: 280px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.slider-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.grid-images {
+  display: grid;
+  /* grid-template-columns: 1fr 1fr;/ */
+  height: 180px;
+}
+
+.grid-images img {
+  height: 90px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.slider-info {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  text-shadow: 0 0 5px rgba(0,0,0,0.7);
+}
+
+.slider-info h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.slider-info p {
+  margin: 4px 0 0;
+  font-size: 14px;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background: white;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.slider-btn:hover {
+  background: #f0f0f0;
+}
+
+.slider-btn.prev {
+  left: -18px;
+}
+
+.slider-btn.next {
+  right: -18px;
+}
+
+
+    .marquee {
+      background-color: #d35400;
+      color: white;
+      padding: 0.5rem;
+      font-weight: bold;
+    }
+
+
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    .icon {
+      font-size: 1.5rem;
+      color: #e67e22;
+    }
+  </style>
+</head>
+<body>
+
+ 
+ <!-- Navbar -->
+<nav>
+    <div class="logo">✨ Mysuru Tourism ✨</div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Attractions</a>
+      <a href="#">Dasara</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+  
+
+  <!-- Header Image -->
+  <header>
+    <div class="header-content">
+      <h1>Welcome to Mysuru</h1>
+      <p>The Cultural Capital of Karnataka</p>
+    </div>
+  </header>
+
+  <!-- Introduction -->
+  <section class="intro">
+    <h2>About Mysuru</h2>
+    <p>Mysuru, formerly known as Mysore, is one of South India's most culturally vibrant cities. Known for its majestic palaces, rich traditions, and vibrant festivals like Dasara, it attracts travelers from around the world. Explore the beauty, history, and elegance of this royal city.</p>
+  </section>
+
+  <!-- Cards -->
+  <section class="cards">
+    <div class="card">
+      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/40/63/77/the-palace-after-the.jpg?w=1100&h=-1&s=1" alt="Mysore Palace"/>
+      <div class="card-content">
+        <div class="icon"><i class="fas fa-landmark"></i></div>
+        <h3>Mysore Palace</h3>
+        <p>The grand royal residence of the Wadiyar dynasty and a jewel of Indo-Saracenic architecture.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/1f/b4/67/zoo-entrance.jpg?w=1800&h=1000&s=1 " alt="Mysore Zoo"/>
+      <div class="card-content">
+        <div class="icon"><i class="fas fa-paw"></i></div>
+        <h3>Mysore Zoo</h3>
+        <p>One of India's oldest zoos, housing rare and exotic species in naturalistic enclosures.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/04/aa/dd/9e/chamundeswari-temple.jpg?w=1000&h=-1&s=1" alt="Chamundi Hills"/>
+      <div class="card-content">
+        <div class="icon"><i class="fas fa-mountain"></i></div>
+        <h3>Chamundi Hills</h3>
+        <p>Visit the sacred Chamundeshwari Temple located atop the serene Chamundi Hills.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/0d/46/da/images-47-largejpg.jpg?w=600&h=600&s=1" alt="Brindavan Gardens"/>
+      <div class="card-content">
+        <div class="icon"><i class="fas fa-water"></i></div>
+        <h3>Brindavan Gardens</h3>
+        <p>Famous for its musical fountain and symmetrical landscaping, a visual treat for tourists.</p>
+      </div>
+    </div>
+
+    <div class="card">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/0c/d2/73/venugopala-swamy-temple.jpg?w=1000&h=-1&s=1" alt="Venugopala Swamy Temple">
+        <div class="card-content">
+          <div class="icon"><i class="fas fa-church"></i></div>
+          <h3>Venugopala Swamy Temple</h3>
+          <p>Temple by the dam backwaters providing a serene setting for meditation, with cultural significance and historic architecture.</p>
+        </div>
+      </div>
+    
+      <div class="card">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/5a/b8/7b/melkote.jpg?w=1000&h=800&s=1" alt="Melkote">
+        <div class="card-content">
+          <div class="icon"><i class="fas fa-landmark"></i></div>
+          <h3>Melkote</h3>
+          <p>Known for Yoga Narasimha temple and beautiful hill views. A peaceful spiritual destination.</p>
+        </div>
+      </div>
+    
+      <div class="card">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/c2/5e/4d/temple-1-largejpg.jpg?w=1000&h=-1&s=1" alt="Namdroling Monastery">
+        <div class="card-content">
+          <div class="icon"><i class="fas fa-praying-hands"></i></div>
+          <h3>Namdroling Monastery</h3>
+          <p>A stunning Tibetan monastery with golden architecture, offering a calm and spiritual experience.</p>
+        </div>
+      </div>
+    
+      <div class="card">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/24/13/e3/4f/main-entrance.jpg?w=1000&h=800&s=1" alt="Lokaranjan Aqua World Underwater Zoo">
+        <div class="card-content">
+          <div class="icon"><i class="fas fa-fish"></i></div>
+          <h3>Lokaranjan Aqua Zoo</h3>
+          <p>Large aquarium with a variety of marine life and a saltwater tunnel — great for families.</p>
+        </div>
+      </div>
+    
+      <div class="card">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/38/46/5b/photo2jpg.jpg?w=1000&h=-1&s=1" alt="Devaraja Market">
+        <div class="card-content">
+          <div class="icon"><i class="fas fa-shopping-basket"></i></div>
+          <h3>Devaraja Market</h3>
+          <p>Historic market full of color, fragrance, and energy. Great for flowers, spices, and photos!</p>
+        </div>
+      </div>
+    
+      <div class="card">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/43/3f/98/20171113-140742-largejpg.jpg?w=1000&h=-1&s=1" alt="St. Philomena's Church">
+        <div class="card-content">
+          <div class="icon"><i class="fas fa-cross"></i></div>
+          <h3>St. Philomena's Church</h3>
+          <p>Neo-Gothic cathedral known for its towering architecture and peaceful ambience for meditation.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/4b/d9/86/mysore-sand-sculpture.jpg?w=1000&h=800&s=1" alt="Mysore Sand Sculpture Museum">
+        <div class="card-content">
+          <div class="icon"><i class="fas fa-university"></i></div>
+          <h3>Mysore Sand Sculpture Museum</h3>
+          <p>Sand sculpture gallery showcasing intricate artistry with 150 detailed pieces themed around Indian mythology and world legends, set in a creative space.</p>
+        </div>
+      </div>
+    
+      <div class="card">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/6b/40/93/avadhoota-datta-peetham.jpg?w=1000&h=-1&s=1" alt="Avadhoota Datta Peetham">
+        <div class="card-content">
+          <div class="icon"><i class="fas fa-spa"></i></div>
+          <h3>Avadhoota Datta Peetham</h3>
+          <p>A renowned spiritual center founded by Sri Ganapathy Sachchidananda Swamiji, promoting moral, cultural, and spiritual values.</p>
+        </div>
+      </div>
+    
+      <div class="card">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/04/ca/f8/98/karanji-lake.jpg?w=800&h=-1&s=1" alt="Karanji Lake">
+        <div class="card-content">
+          <div class="icon"><i class="fas fa-water"></i></div>
+          <h3>Karanji Lake</h3>
+          <p>Scenic lake ideal for boating and walking, surrounded by lush greenery and rich birdlife—a tranquil getaway in the city.</p>
+        </div>
+      </div>
+</section>
+
+<section class="safaris">
+    <h2>Safaris</h2>
+    <div class="safari-cards">
+  
+      <div class="safari-card">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/d6/7c/b8/caption.jpg?w=300&h=300&s=1" alt="Bandipur Safari">
+        <div class="safari-info">
+          <h3>2 Day Bandipur Safari and Mysore Palace Tour</h3>
+          <div class="rating"><span>★★★★★</span> 5.0 (1)</div>
+          <p class="type">Overnight Tours</p>
+          <p class="price">from ₹32,000 <span class="note">per adult</span></p>
+        </div>
+      </div>
+  
+      <div class="safari-card">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/25/1e/e7/7d/caption.jpg?w=300&h=300&s=1" alt="Wildlife Tour">
+        <div class="safari-info">
+          <h3><span class="badge">Likely to sell out</span> Bandipur wildlife and Mysore experience</h3>
+          <div class="rating"><span>★★★★★</span> 5.0 (5)</div>
+          <p class="type">Overnight Tours</p>
+          <p class="price">from ₹40,302 <span class="note">per adult</span></p>
+        </div>
+      </div>
+  
+      <div class="safari-card">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/e1/28/aa/caption.jpg?w=300&h=300&s=1" alt="Tiger Safari">
+        <div class="safari-info">
+          <h3>Bangalore to Bandipur National Park via Mysore</h3>
+          <div class="rating"><span>★★★★★</span> 5.0</div>
+          <p class="type">Multi-day Tours</p>
+          <p class="price">from ₹43,544 <span class="note">per adult</span></p>
+        </div>
+      </div>
+  
+      <div class="safari-card">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/2d/29/3a/caption.jpg?w=300&h=300&s=1" alt="Nagarhole Safari">
+        <div class="safari-info">
+          <h3>Bangalore to Mysore & Nagarhole National Park</h3>
+          <div class="rating"><span>★★★★★</span> 5.0 (1)</div>
+          <p class="type">Multi-day Tours</p>
+          <p class="price">from ₹86,649 <span class="note">per adult</span></p>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+
+  <section class="nearby-slider-section">
+    <h2>Explore other places nearby</h2>
+  
+    <div class="slider-wrapper">
+      <button class="slider-btn prev">&#8592;</button>
+  
+      <div class="slider-track">
+        <div class="slider-card">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/b2/72/cb/img-20170909-110821-burst2.jpg?w=700&h=400&s=1" alt="Munnar">
+          <div class="slider-info">
+            <h3>Munnar</h3>
+            <p>251 km</p>
+          </div>
+        </div>
+  
+        <div class="slider-card">
+          <div class="grid-images">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/01/1d/48/1b/the-drive-to.jpg?w=700&h=400&s=1" alt="">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/01/cc/d2/39/periyar-tiger-reserve.jpg?w=700&h=400&s=1" alt="">
+          </div>
+        </div>
+  
+        <div class="slider-card">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/5e/59/d4/alleppey-backwater-tour.jpg?w=700&h=-1&s=1" alt="Madikeri">
+          <div class="slider-info">
+            <h3>Madikeri</h3>
+            <p>100 km</p>
+          </div>
+        </div>
+  
+        <div class="slider-card">
+          <div class="grid-images">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/de/f0/eb/backwater-tourism.jpg?w=700&h=-1&s=1" alt="">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/06/59/82/a7/alappuzha-lighthouse.jpg?w=700&h=400&s=1" alt="">
+          </div>
+        </div>
+      </div>
+      
+  
+      <button class="slider-btn next">&#8594;</button>
+    </div>
+  </section>
+
+  
+  
+  
+  <!-- Marquee -->
+  <div class="marquee">
+    <marquee behavior="scroll" direction="left">🎉 Mysuru Dasara 2025: Join the 10-day royal celebration featuring cultural parades, folk performances, and illuminated palaces starting October 1st! 🎊</marquee>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Mysuru Tourism. All rights reserved. | Designed with ❤️</p>
+  </footer>
+
+</body>
+</html>
