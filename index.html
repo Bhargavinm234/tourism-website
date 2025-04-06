@@ -357,21 +357,143 @@
       font-size: 1.5rem;
       color: #e67e22;
     }
+
+
+    @media (max-width: 1024px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links a {
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1rem;
+  }
+
+  .intro {
+    padding: 1rem;
+  }
+
+  .safaris {
+    padding: 30px 10px;
+  }
+
+  .nearby-slider-section h2 {
+    margin-left: 10px;
+    font-size: 22px;
+  }
+
+  .slider-card {
+    min-width: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .safari-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .slider-card {
+    min-width: 200px;
+  }
+
+  header {
+    height: 40vh;
+  }
+
+  .header-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .header-content p {
+    font-size: 1rem;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  .nav-links a {
+    font-size: 0.95rem;
+  }
+
+  .slider-btn {
+    display: none; /* hide buttons on very small screens if overflow scrolling works */
+  }
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #004d40;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 10px 0;
+    z-index: 1000;
+  }
+
+  .nav-links a {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid #00796b;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+}
+
+
   </style>
 </head>
 <body>
 
  
  <!-- Navbar -->
-<nav>
-    <div class="logo">✨ Mysuru Tourism ✨</div>
-    <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">Attractions</a>
-      <a href="#">Dasara</a>
-      <a href="#">Contact</a>
+  <nav>
+    <div class="logo">Mysuru Tourism</div>
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#cards">Attractions</a>
+      <a href="#dasara">Dasara</a>
+      <a href="#contact">Contact</a>
     </div>
   </nav>
+  
   
 
   <!-- Header Image -->
@@ -389,7 +511,7 @@
   </section>
 
   <!-- Cards -->
-  <section class="cards">
+  <section class="cards" id="cards">
     <div class="card">
       <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/40/63/77/the-palace-after-the.jpg?w=1100&h=-1&s=1" alt="Mysore Palace"/>
       <div class="card-content">
@@ -600,16 +722,38 @@
 
   
   
-  
   <!-- Marquee -->
-  <div class="marquee">
+  <div class="marquee" id="dasara">
     <marquee behavior="scroll" direction="left">🎉 Mysuru Dasara 2025: Join the 10-day royal celebration featuring cultural parades, folk performances, and illuminated palaces starting October 1st! 🎊</marquee>
   </div>
 
   <!-- Footer -->
-  <footer>
+  <footer id="contact">
     <p>&copy; 2025 Mysuru Tourism. All rights reserved. | Designed with ❤️</p>
   </footer>
 
+
+  <script>
+    const navLinks = document.getElementById("navLinks");
+  
+    function toggleMenu() {
+      navLinks.classList.toggle("show");
+    }
+  
+    
+    window.addEventListener("scroll", () => {
+      navLinks.classList.remove("show");
+    });
+  
+  
+    document.addEventListener("click", (e) => {
+      const hamburger = document.querySelector(".hamburger");
+      if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+        navLinks.classList.remove("show");
+      }
+    });
+  </script>
+  
+  
 </body>
 </html>
